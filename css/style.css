@@ -1,0 +1,283 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pixelify Sans', cursive;
+
+}
+
+.title{
+    text-align: center;
+
+}
+
+.poke-title{
+    height: 200px;
+
+}
+
+body{
+    background-image: url(https://i.postimg.cc/Nfdmjvfy/wallpaperflare-com-wallpaper-1.jpg);
+    background: cover;
+    background-size: 100%;
+
+}
+
+
+.search{
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.search input{
+    height: 30px;
+    border-radius: 5px;
+
+}
+
+.search inptut[ type ='text']{
+    font-size: 16px;
+
+}
+
+#check-btn{
+    height: 30px;
+    background-color: rgb(45,88,161);
+    color: yellow;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#pokeshow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+}
+
+
+
+.pokemon-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 250px; /* Set the width of the card */
+    height: 370px;
+    background-color: #f0f0f0;
+    border: 5px solid rgb(250,204,72);
+    border-radius: 10px;
+    box-shadow:10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+    margin-bottom: 48px;
+    overflow: hidden;
+    
+}
+
+.pokemon-card:hover{
+    animation: bounce 0.5s linear;
+}
+
+@keyframes bounce {
+    20% {
+        transform: translateY(-6px);
+    }
+    40% {
+        transform: translateY(0px);
+    }
+
+    80% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+.image-container{
+    flex: 1;
+    text-align: center ;
+
+  
+}
+
+.move-hp{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 5px 0px 0px;
+    
+}
+
+.hp{
+    width: 45px;
+    background-color: rgb(250,204,72);
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 50%;
+    font-weight:  400;
+    border: 1px solid black;
+    font-size: 14px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add an inset shadow for depth */
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+   
+}
+
+
+
+.hp span{
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+
+
+.image-container img{
+    width: 100px; /* Adjust this value as needed */
+    height: auto; /* Automatically calculate the height to maintain aspect ratio */
+    position: relative;
+
+}
+
+.text-container{
+    flex: 1;
+    background-color: purple;
+    width: 100%;
+    margin: 0;
+    padding: 0; 
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid rgb(179, 174, 174);
+
+}
+
+
+
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.text-container h2{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+}
+
+
+
+.type{
+    background-color: #1A1A1A;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block; /* Use inline-block to make the background adjust to content */
+    width: auto;
+    color: white;
+    text-align: center;
+    position: relative;
+    top: -69px;
+    left: 1px;
+}
+
+
+.text-container p {
+    text-align: left; /* Left-align the p elements */
+    font-size: 14px;
+    padding: 5px ;
+
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top:-30px;
+}
+
+.stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.stat-label {
+    margin-right: 5px;
+    font-weight: bold;
+    display: flex;
+    
+}
+
+.stat-value {
+    font-weight: normal;
+}
+.btn2{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-bottom: 40px;
+    
+
+}
+
+
+#generateButton{
+    height: 40px;
+    background-color: rgb(45,88,161);
+    color: yellow;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: transparent; /* Change to your preferred background color */
+}
+
+
+
+
+
+/*
+progress{
+    accent-color: rgb(86, 82, 82);
+}
+*/
+
+@media (max-width: 1024px) {
+    #pokeshow {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    }
+}
+
+/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+@media (max-width: 768px) {
+    #pokeshow {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+/* Media query for screens with a maximum width of 375px (typical for narrow mobile screens) */
+@media (max-width: 375px) {
+    #pokeshow {
+        grid-template-columns: 1fr; /* 1 column for narrow screens */
+        gap: 10px;
+    }
+}
+
+
+/* water type pokemon*
+.water-type {
+    background: linear-gradient(to right, rgb(0, 88, 123), white);
+}
+
+/* fire type pokemon
+
+.fire-type {
+    background:linear-gradient(90deg, rgba(180,58,66,1) 1%, rgba(253,97,29,1) 63%, rgba(252,176,69,1) 100%);
+}
+*/
+
+
