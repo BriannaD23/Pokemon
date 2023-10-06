@@ -134,6 +134,24 @@ const displayPokemon = (pokemon) => {
             accentColor = '#3B3B3B'; // Grey
         }
         
+        const cards = document.querySelectorAll(".pokemon-card");
+
+        function updateCardVisibility() {
+            cards.forEach((card) => {
+                if (window.innerWidth <= 768) {
+                    card.classList.add("hidden-on-mobile"); // Add a class to hide the card on smaller screens
+                } else {
+                    card.classList.remove("hidden-on-mobile"); // Remove the class to show the card on larger screens
+                }
+            });
+        }
+
+        // Add an event listener for the resize event to update card visibility
+        window.addEventListener("resize", updateCardVisibility);
+
+        // Initial visibility update
+        updateCardVisibility();
+
 
 
         // Create and add HTML elements
@@ -240,11 +258,6 @@ generateButton.addEventListener('click', () => {
     currentPage++; // Increment the current page
     fetchPokemon(currentPage); // Fetch Pokémon for the next page
 });
-
-
-
-
-
 
 
 

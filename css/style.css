@@ -18,9 +18,10 @@
 
 body{
     background-image: url(https://i.postimg.cc/Nfdmjvfy/wallpaperflare-com-wallpaper-1.jpg);
-    background: cover;
-    background-size: 100%;
-
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 
@@ -236,6 +237,30 @@ progress[value]::-webkit-progress-bar {
     background-color: transparent; /* Change to your preferred background color */
 }
 
+.hidden-on-mobile {
+    display: none;
+}
+
+
+/* Mobile responsiveness media queries */
+
+@media (max-width: 768px) {
+
+    body{
+        background-image: url(https://i.postimg.cc/59h06j0Z/pokemon.jpg);
+    
+        background-size: 100%;
+    }
+    .pokemon-card {
+        width: 100%; /* Full width on smaller screens (one card per row) */
+        max-width: 250px; /* Set maximum width for the card */
+    }
+
+    .poke-title{
+        height: 150px;
+    
+    }
+}
 
 
 
@@ -246,26 +271,6 @@ progress{
 }
 */
 
-@media (max-width: 1024px) {
-    #pokeshow {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
-    }
-}
-
-/* Media query for screens with a maximum width of 768px (typical for mobile devices) */
-@media (max-width: 768px) {
-    #pokeshow {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-    }
-}
-
-/* Media query for screens with a maximum width of 375px (typical for narrow mobile screens) */
-@media (max-width: 375px) {
-    #pokeshow {
-        grid-template-columns: 1fr; /* 1 column for narrow screens */
-        gap: 10px;
-    }
-}
 
 
 /* water type pokemon*
