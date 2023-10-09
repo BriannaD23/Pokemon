@@ -10,8 +10,7 @@ const pageSize = 3; // Set the number of Pokémon to fetch per page
 const fetchPokemon = (page) => {
     // Calculate the range of Pokémon to fetch based on the page
     const start = (page - 1) * pageSize + 1;
-    const end = start + pageSize ;
-    
+    const end = start + pageSize ;    
 
     // Start off with an empty array of promises
     const promises = [];
@@ -51,6 +50,7 @@ const fetchPokemon = (page) => {
 const displayPokemon = (pokemon) => {
     // Clear the existing content in the pokeshow element
     pokeShow.innerHTML = '';
+    
 
     // Create Pokémon cards
     pokemon.forEach((pokeData) => {
@@ -169,9 +169,8 @@ const displayPokemon = (pokemon) => {
             accentColor = '#111111';
         }else{
             accentColor = '#3B3B3B'; // Grey
-        }
+        };
 
-        
         const cards = document.querySelectorAll(".pokemon-card");
 
         function updateCardVisibility() {
@@ -190,23 +189,7 @@ const displayPokemon = (pokemon) => {
         // Initial visibility update
         updateCardVisibility();
 
-        const images = document.querySelectorAll('.image-container img');
 
-        const imageContainers = document.querySelectorAll('.image-container');
-
-        // Loop through each .image-container element
-        imageContainers.forEach((container) => {
-            // Define the threshold height (e.g., 100px)
-            const thresholdHeight = 100;
-
-            // Check if the height of the image container's content (the image) is below the threshold
-            if (container.clientHeight < thresholdHeight) {
-                // If the content height is below the threshold, apply the translation
-                container.style.transform = 'translateY(-20%)';
-            }
-        });
-
-        // Create and add HTML elements
         pokeCard.innerHTML = `
             <div class="image-container" style= "background : ${imageContainerGradient};">
                 <div class= "move-hp">
@@ -215,7 +198,7 @@ const displayPokemon = (pokemon) => {
                     ${pokeData.hp}
                 </p>
                 </div>
-                <img  src="${pokeData.image}">
+                <img src="${pokeData.image}">
             </div>
             <div class="text-container" style="background: ${textContainerGradient};">
                 <h2 class="capitalize">${pokeData.name}</h2>
