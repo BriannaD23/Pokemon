@@ -65,7 +65,7 @@ const displayPokemon = (pokemon) => {
         let imageContainerGradient = '';
 
         if(type === 'water'){//blue
-            imageContainerGradient =  'linear-gradient(to left, rgb(0, 88, 123), rgba(255, 255, 255, 0.1))';
+            imageContainerGradient = 'linear-gradient(to left, #007acc, #00559b)';
         }else if (type === 'fire'){//orange
             imageContainerGradient = 'linear-gradient(90deg, rgba(180,58,66,1) 1%, rgba(253,97,29,1) 63%, rgba(252,176,69,1) 100%)';
         }else if(type === 'grass'){//green
@@ -82,15 +82,27 @@ const displayPokemon = (pokemon) => {
             imageContainerGradient = 'linear-gradient(to left, #004d00, #1a8c1a);'
         }else if( type === 'fairy'){
             imageContainerGradient = 'linear-gradient(to left, #ff1493, #ffc0cb)';
-
-        };
+        }else if( type === 'fighting'){
+            imageContainerGradient = 'linear-gradient(to left, #8B0000, #FF1A1A)';
+        }else if (type === 'rock'){
+            imageContainerGradient = 'linear-gradient(to bottom, #333333, #808080, #080808)';
+        }else if (type === 'dragon'){
+            imageContainerGradient = 'linear-gradient(to bottom, #000000, #4B0082)';
+        }else if (type === 'psychic'){
+            imageContainerGradient =  'radial-gradient(circle, black 20%, white 20%, white 40%, black 40%, black 60%, white 60%, white 80%, black 80%)' ;
+        }else if (type === 'ice'){
+            imageContainerGradient = 'linear-gradient(to left, rgb(0, 88, 123), rgba(255, 255, 255, 0.1))';
+        }else if (type === 'ghost') {
+            imageContainerGradient =  'linear-gradient(to bottom, #1B1B1B, #0D0D0D, #1B1B1B)';
+        }
+        ;
 
 
         // Separate linear gradients for text-container
         let textContainerGradient = '';
 
         if (type === 'water') {//blue
-            textContainerGradient = '#8dc5e8';
+            textContainerGradient = '#6EB5FF';
         } else if (type === 'fire') {//orange
             textContainerGradient = '#f7c592';
         } else if (type === 'grass') {//green
@@ -107,13 +119,26 @@ const displayPokemon = (pokemon) => {
             textContainerGradient = '#99FF99';
         }else if ( type === 'fairy'){//pink
             textContainerGradient = '#ffc0cb';
-        };
+        }else if(type === 'fighting'){//'#FF5733'
+            textContainerGradient = '#ed7777';
+        }else if(type === 'rock'){
+            textContainerGradient = '#C0C0C0';
+        }else if( type === 'dragon'){
+            textContainerGradient = '#6B5B95';
+        }else if( type === 'psychic'){
+            textContainerGradient = '#F0F0F0; ';
+        }else if( type === 'ice'){
+            textContainerGradient = '#8dc5e8';
+        }else if (type === 'ghost') {
+            textContainerGradient = '#666';
+        }
+        ;
 
 
         let accentColor = '';
 
         if (type === 'water') {
-            accentColor = '#2A6685'; // Blue
+            accentColor = '#2172C1'; // Blue
         } else if (type === 'fire') {
             accentColor = '#C84434'; // Orange
         } else if (type === 'grass') {
@@ -130,9 +155,22 @@ const displayPokemon = (pokemon) => {
             accentColor = '#23530F'; // Bug
         } else if (type === 'fairy') {
             accentColor = '#EC4497'; // Pink
+        }else if( type === 'rock'){
+            accentColor = '#252525';
+        }else if( type === 'dragon') {
+            accentColor = '#301452';
+        }else if(type === 'fighting'){
+            accentColor = '#9C221E';
+        }else if ( type === 'ice'){
+            accentColor === '#2A6685';        
+        }else if (type === 'ghost') {
+            accentColor = '#111111';
+        }else if (type === 'psychic'){
+            accentColor = '#111111';
         }else{
             accentColor = '#3B3B3B'; // Grey
         }
+
         
         const cards = document.querySelectorAll(".pokemon-card");
 
@@ -152,7 +190,21 @@ const displayPokemon = (pokemon) => {
         // Initial visibility update
         updateCardVisibility();
 
+        const images = document.querySelectorAll('.image-container img');
 
+        const imageContainers = document.querySelectorAll('.image-container');
+
+        // Loop through each .image-container element
+        imageContainers.forEach((container) => {
+            // Define the threshold height (e.g., 100px)
+            const thresholdHeight = 100;
+
+            // Check if the height of the image container's content (the image) is below the threshold
+            if (container.clientHeight < thresholdHeight) {
+                // If the content height is below the threshold, apply the translation
+                container.style.transform = 'translateY(-20%)';
+            }
+        });
 
         // Create and add HTML elements
         pokeCard.innerHTML = `
@@ -163,7 +215,7 @@ const displayPokemon = (pokemon) => {
                     ${pokeData.hp}
                 </p>
                 </div>
-                <img src="${pokeData.image}">
+                <img  src="${pokeData.image}">
             </div>
             <div class="text-container" style="background: ${textContainerGradient};">
                 <h2 class="capitalize">${pokeData.name}</h2>
@@ -258,16 +310,3 @@ generateButton.addEventListener('click', () => {
     currentPage++; // Increment the current page
     fetchPokemon(currentPage); // Fetch Pokémon for the next page
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
