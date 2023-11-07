@@ -1,11 +1,12 @@
 const pokeShow = document.getElementById('pokeshow');
 const generateButton = document.getElementById('generateButton');
+const generateButton2 = document.getElementById('generateButton2');
 const searchInput = document.getElementById('pokeInput');
 const searchButton  = document.getElementById('check-btn');
 
 let currentPage = 1;
 
-const pageSize = 3; // Set the number of Pokémon to fetch per page
+const pageSize = 1; // Set the number of Pokémon to fetch per page
 
 const fetchPokemon = (page) => {
     // Calculate the range of Pokémon to fetch based on the page
@@ -46,9 +47,14 @@ const fetchPokemon = (page) => {
         });
 };
 
+
+
 // Function to display Pokémon
 const displayPokemon = (pokemon) => {
     // Clear the existing content in the pokeshow element
+
+        
+
     pokeShow.innerHTML = '';
     
 
@@ -57,6 +63,7 @@ const displayPokemon = (pokemon) => {
         const pokeCard = document.createElement('div');
         pokeCard.classList.add('pokemon-card');
 
+    
 
         const type = pokeData.type.toLowerCase(); 
 
@@ -134,6 +141,7 @@ const displayPokemon = (pokemon) => {
         }
         ;
 
+        
 
         let accentColor = '';
 
@@ -171,23 +179,6 @@ const displayPokemon = (pokemon) => {
             accentColor = '#3B3B3B'; // Grey
         };
 
-        const cards = document.querySelectorAll(".pokemon-card");
-
-        function updateCardVisibility() {
-            cards.forEach((card) => {
-                if (window.innerWidth <= 768) {
-                    card.classList.add("hidden-on-mobile"); // Add a class to hide the card on smaller screens
-                } else {
-                    card.classList.remove("hidden-on-mobile"); // Remove the class to show the card on larger screens
-                }
-            });
-        }
-
-        // Add an event listener for the resize event to update card visibility
-        window.addEventListener("resize", updateCardVisibility);
-
-        // Initial visibility update
-        updateCardVisibility();
 
 
         pokeCard.innerHTML = `
@@ -232,10 +223,31 @@ const displayPokemon = (pokemon) => {
 
         pokeShow.appendChild(pokeCard);
     });
+
     
 };
 
+const cards = document.querySelectorAll(".pokemon-card");
 
+function updateCardVisibility() {
+    cards.forEach((card, index) => {
+        if (window.innerWidth <= 768) {
+            if (index === 0) {
+                card.classList.remove("hidden-on-mobile"); // Show the first card on smaller screens
+            } else {
+                card.classList.add("hidden-on-mobile"); // Add a class to hide the other cards on smaller screens
+            }
+        } else {
+            card.classList.remove("hidden-on-mobile"); // Remove the class to show all cards on larger screens
+        }
+    });
+}
+
+// Add an event listener for the resize event to update card visibility
+window.addEventListener("resize", updateCardVisibility);
+
+// Initial visibility update
+updateCardVisibility();
 
 
 // Initial fetch and display of Pokémon for the first page
@@ -293,3 +305,10 @@ generateButton.addEventListener('click', () => {
     currentPage++; // Increment the current page
     fetchPokemon(currentPage); // Fetch Pokémon for the next page
 });
+
+
+
+
+
+
+

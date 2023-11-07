@@ -240,6 +240,10 @@ progress[value]::-webkit-progress-bar {
     background-color: transparent; /* Change to your preferred background color */
 }
 
+.hidden-on-large{
+    display: none;
+}
+
 .hidden-on-mobile {
     display: none;
 }
@@ -263,6 +267,31 @@ progress[value]::-webkit-progress-bar {
     
     }
     
+}
+
+/*
+#pokeshow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.poke-title {
+    height: 150px;
+}
+
+#pokeshow .pokemon-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 250px;
+    height: 370px;
+    background-color: #f0f0f0;
+    border: 5px solid rgb(250, 204, 72);
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+    margin-bottom: 48px;
+    overflow: hidden;
 }
 
 
