@@ -6,22 +6,19 @@ const searchButton  = document.getElementById('check-btn');
 
 let currentPage = 1;
 
-const pageSize = 1; // Set the number of Pokémon to fetch per page
+const pokemonPerPg = 1; 
 
 const fetchPokemon = (page) => {
-    // Calculate the range of Pokémon to fetch based on the page
-    const start = (page - 1) * pageSize + 1;
-    const end = start + pageSize ;    
+    const start = (page - 1) * pokemonPerPg + 1;
+    const end = start + pokemonPerPg ;    
 
-    // Start off with an empty array of promises
     const promises = [];
     for (let i = start; i < end; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         promises.push(fetch(url).then((res) => res.json()));
     }
 
-    /* Let all individual asynchronous calls run in parallel, and when they are done, 
-       trigger a .then to get access to all the results */
+
     Promise.all(promises)
         .then((results) => {
             console.log('fetchPokemon', results);
@@ -39,7 +36,7 @@ const fetchPokemon = (page) => {
                 specialAttack: data.stats[3].base_stat
             }));
 
-            // Display fetched Pokémon data
+           
             displayPokemon(pokemon);
         })
         .catch((error) => {
@@ -49,16 +46,15 @@ const fetchPokemon = (page) => {
 
 
 
-// Function to display Pokémon
+
 const displayPokemon = (pokemon) => {
-    // Clear the existing content in the pokeshow element
+  
 
         
 
     pokeShow.innerHTML = '';
     
 
-    // Create Pokémon cards
     pokemon.forEach((pokeData) => {
         const pokeCard = document.createElement('div');
         pokeCard.classList.add('pokemon-card');
@@ -71,17 +67,17 @@ const displayPokemon = (pokemon) => {
 
         let imageContainerGradient = '';
 
-        if(type === 'water'){//blue
+        if(type === 'water'){
             imageContainerGradient = 'linear-gradient(to left, #007acc, #00559b)';
-        }else if (type === 'fire'){//orange
+        }else if (type === 'fire'){
             imageContainerGradient = 'linear-gradient(90deg, rgba(180,58,66,1) 1%, rgba(253,97,29,1) 63%, rgba(252,176,69,1) 100%)';
-        }else if(type === 'grass'){//green
+        }else if(type === 'grass'){
             imageContainerGradient =  'linear-gradient(to left, rgb(65, 170, 70), rgb(160, 227, 160))';
-        }else if(type === 'electric'){//yellow
+        }else if(type === 'electric'){
             imageContainerGradient = 'linear-gradient(to right, yellow, black)' ;
-        }else if(type === 'normal'){//grey
+        }else if(type === 'normal'){
             imageContainerGradient = ' linear-gradient(to left, darkgrey, grey, lightgrey)';
-        }else if(type === 'poison'){//purple
+        }else if(type === 'poison'){
             imageContainerGradient = 'linear-gradient(to right, #B19CD9, #48288A)' ;
         }else if(type === 'ground'){
             imageContainerGradient = 'linear-gradient(to left, #8B4513, #A0522D, #D2B48C)';
@@ -105,28 +101,27 @@ const displayPokemon = (pokemon) => {
         ;
 
 
-        // Separate linear gradients for text-container
         let textContainerGradient = '';
 
-        if (type === 'water') {//blue
+        if (type === 'water') {
             textContainerGradient = '#6EB5FF';
-        } else if (type === 'fire') {//orange
+        } else if (type === 'fire') {
             textContainerGradient = '#f7c592';
-        } else if (type === 'grass') {//green
+        } else if (type === 'grass') {
             textContainerGradient = '#a9d6a7';
-        }else if(type === 'electric'){//yellow
+        }else if(type === 'electric'){
             textContainerGradient ='#FFFFB3';
-        }else if(type === 'normal'){//grey
-            textContainerGradient ='#bebbbf'; //'#b1adb3' ;
-        }else if(type === 'poison'){//purple
+        }else if(type === 'normal'){
+            textContainerGradient ='#bebbbf'; 
+        }else if(type === 'poison'){
             textContainerGradient = '#d6b1e3';
-        }else if( type === 'ground'){//brown
+        }else if( type === 'ground'){
             textContainerGradient = '#D2B48C';
-        }else if( type === 'bug'){//bug
+        }else if( type === 'bug'){
             textContainerGradient = '#99FF99';
-        }else if ( type === 'fairy'){//pink
+        }else if ( type === 'fairy'){
             textContainerGradient = '#ffc0cb';
-        }else if(type === 'fighting'){//'#FF5733'
+        }else if(type === 'fighting'){
             textContainerGradient = '#ed7777';
         }else if(type === 'rock'){
             textContainerGradient = '#C0C0C0';
@@ -146,23 +141,23 @@ const displayPokemon = (pokemon) => {
         let accentColor = '';
 
         if (type === 'water') {
-            accentColor = '#2172C1'; // Blue
+            accentColor = '#2172C1'; 
         } else if (type === 'fire') {
-            accentColor = '#C84434'; // Orange
+            accentColor = '#C84434'; 
         } else if (type === 'grass') {
-            accentColor = '#23530F'; // Green
-        } else if (type === 'electric') {//yellow
+            accentColor = '#23530F'; 
+        } else if (type === 'electric') {
             accentColor = '#FAF850';
         } else if (type === 'normal') {
-            accentColor = '#3B3B3B'; // Grey
+            accentColor = '#3B3B3B';
         } else if (type === 'poison') {
-            accentColor = '#563395'; // Purple
+            accentColor = '#563395';
         } else if (type === 'ground') {
-            accentColor = '#91491F'; // Brown
+            accentColor = '#91491F'; 
         } else if (type === 'bug') {
-            accentColor = '#23530F'; // Bug
+            accentColor = '#23530F'; 
         } else if (type === 'fairy') {
-            accentColor = '#EC4497'; // Pink
+            accentColor = '#EC4497'; 
         }else if( type === 'rock'){
             accentColor = '#252525';
         }else if( type === 'dragon') {
@@ -233,39 +228,32 @@ function updateCardVisibility() {
     cards.forEach((card, index) => {
         if (window.innerWidth <= 768) {
             if (index === 0) {
-                card.classList.remove("hidden-on-mobile"); // Show the first card on smaller screens
+                card.classList.remove("hidden-on-mobile"); 
             } else {
-                card.classList.add("hidden-on-mobile"); // Add a class to hide the other cards on smaller screens
+                card.classList.add("hidden-on-mobile"); 
             }
         } else {
-            card.classList.remove("hidden-on-mobile"); // Remove the class to show all cards on larger screens
+            card.classList.remove("hidden-on-mobile"); 
         }
     });
 }
 
-// Add an event listener for the resize event to update card visibility
 window.addEventListener("resize", updateCardVisibility);
 
-// Initial visibility update
 updateCardVisibility();
 
 
-// Initial fetch and display of Pokémon for the first page
 fetchPokemon(currentPage);
 
 
 const filterPokemon = (query) => {
-    // Clear the existing content in the pokeshow element
     pokeShow.innerHTML = '';
 
-    // Check if the query is empty
     if (query.trim() === '') {
-        // If the query is empty, fetch the first Pokémon on the current page
         fetchPokemon(currentPage);
         return;
     }
 
-    // Fetch the Pokémon by name using the search query
     const url = `https://pokeapi.co/api/v2/pokemon/${query.toLowerCase()}`;
     fetch(url)
         .then((res) => res.json())
@@ -283,7 +271,6 @@ const filterPokemon = (query) => {
                 },
             ];
 
-            // Display the fetched Pokémon data
             displayPokemon(pokemon);
         })
         .catch((error) => {
@@ -291,7 +278,6 @@ const filterPokemon = (query) => {
         });
 };
 
-// Event listener for the search button
 searchButton.addEventListener('click', () => {
     const searchQuery = searchInput.value;
     filterPokemon(searchQuery);
@@ -300,10 +286,9 @@ searchButton.addEventListener('click', () => {
 
 
 
-// Event listener for the "Generate More Pokémon" button
 generateButton.addEventListener('click', () => {
-    currentPage++; // Increment the current page
-    fetchPokemon(currentPage); // Fetch Pokémon for the next page
+    currentPage++; 
+    fetchPokemon(currentPage); 
 });
 
 

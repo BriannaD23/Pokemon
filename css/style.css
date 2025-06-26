@@ -63,7 +63,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 250px; /* Set the width of the card */
+    width: 250px; 
     height: 370px;
     background-color: #f0f0f0;
     border: 5px solid rgb(250,204,72);
@@ -111,7 +111,7 @@ body{
     font-weight:  400;
     border: 1px solid black;
     font-size: 14px;
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add an inset shadow for depth */
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(0, 0, 0, 0.2);
 
    
@@ -176,7 +176,7 @@ body{
     background-color: #1A1A1A;
     padding: 5px;
     border-radius: 5px;
-    display: inline-block; /* Use inline-block to make the background adjust to content */
+    display: inline-block; 
     width: auto;
     color: white;
     text-align: center;
@@ -187,7 +187,7 @@ body{
 
 
 .text-container p {
-    text-align: left; /* Left-align the p elements */
+    text-align: left; 
     font-size: 14px;
     padding: 5px ;
 
@@ -237,7 +237,7 @@ body{
 }
 
 progress[value]::-webkit-progress-bar {
-    background-color: transparent; /* Change to your preferred background color */
+    background-color: transparent; 
 }
 
 .hidden-on-large{
@@ -258,8 +258,8 @@ progress[value]::-webkit-progress-bar {
         background-size: 100%;
     }
     .pokemon-card {
-        width: 100%; /* Full width on smaller screens (one card per row) */
-        max-width: 250px; /* Set maximum width for the card */
+        width: 100%; 
+        max-width: 250px; 
     }
 
     .poke-title{
